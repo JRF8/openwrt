@@ -2840,6 +2840,18 @@ define Device/tplink_archer-ax23-v1
 endef
 TARGET_DEVICES += tplink_archer-ax23-v1
 
+define Device/tplink_archer-ax21-v1
+  $(Device/dsa-migration)
+  $(Device/tplink-safeloader)
+  DEVICE_MODEL := Archer AX21
+  DEVICE_VARIANT := v1
+  DEVICE_PACKAGES := kmod-mt7915-firmware -uboot-envtools
+  TPLINK_BOARD_ID := ARCHER-AX21-V1
+  KERNEL := $(KERNEL_DTB) | uImage lzma
+  IMAGE_SIZE := 16128k
+endef
+TARGET_DEVICES += tplink_archer-ax21-v1
+
 define Device/tplink_archer-a6-v3
   $(Device/dsa-migration)
   $(Device/tplink-safeloader)

@@ -182,6 +182,20 @@ case "$board" in
 		hw_mac_addr="$(mtd_get_mac_binary factory 0x4)"
 		[ "$PHYNBR" = "1" ] &&  macaddr_add $hw_mac_addr "0x100000" > /sys${DEVPATH}/macaddress
 		;;
+	tplink,archer-ax23-v1)
+		hw_mac_addr="$(mtd_get_mac_binary config 0x8)"
+		# 2.4 GHz MAC is MAC in EEPROm while 5GHz is EEPROM_MAC -1
+		# However, mac80211 assigns consecutive addresses for each VAP
+		# Which leads to conflicting addresses. Set the LA bit for 5Ghz instead.
+		[ "$PHYNBR" = "1" ] &&  macaddr_setbit_la "$hw_mac_addr" > "/sys${DEVPATH}/macaddress"
+		;;
+	tplink,archer-ax21-v1)
+		hw_mac_addr="$(mtd_get_mac_binary config 0x8)"
+		# 2.4 GHz MAC is MAC in EEPROm while 5GHz is EEPROM_MAC -1
+		# However, mac80211 assigns consecutive addresses for each VAP
+		# Which leads to conflicting addresses. Set the LA bit for 5Ghz instead.
+		[ "$PHYNBR" = "1" ] &&  macaddr_setbit_la "$hw_mac_addr" > "/sys${DEVPATH}/macaddress"
+		;;
 	yuncore,ax820|\
 	yuncore,g720)
 		[ "$PHYNBR" = "1" ] && \
