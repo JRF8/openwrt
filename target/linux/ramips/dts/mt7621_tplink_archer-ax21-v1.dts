@@ -116,19 +116,19 @@
 
 			partition@fc0000 {
 				label = "user-config";
-				reg = <0xfc0000, 0x10000>;
+				reg = <0xfc0000 0x10000>;
 				read-only;
 			};
 
 			partition@fd0000 {
 				label = "ag-config";
-				reg = <0xfd0000, 0x10000>;
+				reg = <0xfd0000 0x10000>;
 				read-only;
 			};
 
 			partition@fe0000 {
 				label = "partition-table";
-				reg = <0xfe0000, 0x10000>;
+				reg = <0xfe0000 0x10000>;
 				read-only;
 			};
 
@@ -171,6 +171,6 @@
 	};
 };
 
-&gsw {
+&switch0 {
 	mediatek,portmap = "wllll";
 };
