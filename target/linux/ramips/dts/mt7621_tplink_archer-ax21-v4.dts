@@ -98,7 +98,7 @@
 			#size-cells = <1>;
 
 			partition@0 {
-				label = "uboot";
+				label = "u-boot";
 				reg = <0x0 0x40000>;
 				read-only;
 			};
@@ -134,7 +134,7 @@
 			};
 
 			partition@bb0000 {
-				label = "ART";
+				label = "radio";
 				reg = <0xff0000 0x010000>;
 				read-only;
 
